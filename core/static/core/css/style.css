@@ -1,0 +1,304 @@
+/* Alex da Silva, Allan Teixeira - ATV06/ATV09 - Turma 523 */
+
+/* Professor, mantivemos o padrão de comentar cada regra que julgamos não ser
+"auto-explicativa", igual fizemos na ATV05, para facilitar a correção e a arguição. */
+
+/* Reset simples: faz padding e border serem contados DENTRO da largura/altura
+de cada elemento, ao invés de serem somados a ela. Isso evita que caixas "estourem"
+o tamanho definido, o que é essencial para o layout responsivo funcionar direito. */
+*{
+    box-sizing: border-box;
+}
+
+/* Configuração geral da página */
+body{
+
+    background-color: black;
+    font-family: Arial;
+
+    /* Espaço entre o bloco inteiro do site e a borda da janela do navegador
+    (antes esse respiro era feito com margem individual em cada área) */
+    margin: 20px;
+
+    /* Borda externa única, envolvendo header + nav + main + footer juntos,
+    como se fosse a borda de uma tabela só. As bordas internas entre as áreas
+    são feitas por border-bottom/border-right/border-top em cada elemento,
+    e não por bordas "soltas" ao redor de cada um */
+    border: 5px solid white;
+
+    /* ===== CSS GRID =====
+    Usamos display: grid no body para organizar o layout mestre do site
+    (cabeçalho, menu, conteúdo e rodapé) em áreas nomeadas, sem precisar de
+    tabelas nem de posicionamento manual com margens/absolute. */
+    display: grid;
+
+    /* Duas colunas: a primeira com 220px fixos para o menu (nav),
+    a segunda "1fr" ocupa todo o espaço restante para o conteúdo (main) */
+    grid-template-columns: 220px 1fr;
+
+    /* Três linhas: header e footer se ajustam ao próprio conteúdo (auto),
+    a linha do meio (nav/main) ocupa o espaço restante da tela (1fr) */
+    grid-template-rows: auto 1fr auto;
+
+    /* Nomeia visualmente cada área do grid, formando o "mapa" do layout:
+    header ocupa as duas colunas no topo, nav e main ficam lado a lado,
+    e footer ocupa as duas colunas embaixo */
+    grid-template-areas:
+        "header header"
+        "nav main"
+        "footer footer";
+
+    /* gap: 0 garante que as áreas do grid fiquem coladas umas nas outras,
+    sem nenhum espaço em branco entre elas, formando um bloco único visualmente */
+    gap: 0;
+
+    /* Garante que o grid sempre ocupe a altura inteira da tela,
+    mesmo quando o conteúdo da página é pequeno */
+    min-height: 100vh;
+
+}
+
+/* Cabeçalho do site (tag semântica <header>) */
+header{
+
+    /* Associa este elemento à área "header" definida no grid do body */
+    grid-area: header;
+
+    background-color: rgb(65,8,118);
+    color: white;
+    text-align: center;
+    padding: 20px;
+
+    /* Borda apenas embaixo, separando visualmente o cabeçalho do restante,
+    sem criar uma segunda borda externa (que já existe no body) */
+    border-bottom: 5px solid white;
+
+}
+
+/* Menu lateral (tag semântica <nav>) */
+nav{
+
+    /* Associa este elemento à área "nav" definida no grid do body */
+    grid-area: nav;
+
+    background-color: rgb(65,8,118);
+    padding: 20px;
+
+    /* Borda apenas na direita, separando o menu do conteúdo principal */
+    border-right: 5px solid white;
+
+    /* ===== FLEXBOX =====
+    Dentro do menu usamos display: flex para organizar os botões.
+    flex-direction: column faz os botões ficarem um embaixo do outro,
+    como uma coluna de navegação. */
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* Área principal onde as páginas são exibidas (tag semântica <main>) */
+main{
+
+    /* Associa este elemento à área "main" definida no grid do body */
+    grid-area: main;
+
+    background-color: black;
+    padding: 20px;
+
+}
+
+/* Rodapé (tag semântica <footer>) */
+footer{
+
+    /* Associa este elemento à área "footer" definida no grid do body */
+    grid-area: footer;
+
+    background-color: rgb(65,8,118);
+    color: white;
+    text-align: center;
+    padding: 20px;
+
+    /* Borda apenas em cima, separando o rodapé do conteúdo principal */
+    border-top: 5px solid white;
+
+}
+
+/* Classe utilizada pelos botões do menu */
+.botao{
+
+    background-color: rgb(136,74,168);
+    color: white;
+
+    /* Faz todos os botões terem a mesma largura dentro da coluna do menu */
+    width: 100%;
+    padding: 15px;
+
+    /* Espaço entre um botão e outro (o flex-direction: column do nav
+    empilha os botões, e esse margin cria o respiro entre eles) */
+    margin-bottom: 15px;
+
+    border: 3px solid white;
+
+    /* Altera o ponteiro do mouse */
+    cursor: pointer;
+
+    font-size: 20px;
+
+}
+
+/* Efeito quando o mouse passa sobre o botão */
+.botao:hover{
+
+    background-color: rgb(56, 17, 109);
+
+}
+
+
+/* Classe utilizada nos títulos principais de cada seção */
+.titulo{
+
+    color: white;
+    text-align: center;
+    font-size: 40px;
+
+}
+
+/* Classe utilizada nos blocos de conteúdo (<article class="cartao">) */
+.cartao{
+
+    background-color: rgb(136,74,168);
+    border: 5px solid white;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 30px;
+    padding: 20px;
+
+}
+
+/* Classe utilizada nos textos */
+.texto{
+
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    font-family: Arial;
+    white-space: pre-line;
+    margin: 0;
+
+}
+
+/* Classe utilizada nas imagens */
+.imagem{
+
+    display: block;
+    margin: auto;
+
+    /* ===== IMAGEM RESPONSIVA =====
+    max-width: 100% impede que a imagem seja mais larga do que o cartão
+    onde ela está, e height: auto mantém a proporção original da imagem
+    conforme ela é redimensionada pela tela */
+    max-width: 100%;
+    height: auto;
+
+}
+
+/* Configuração dos títulos menores */
+h2{
+
+    color: white;
+    text-align: center;
+
+}
+
+/* ===================================================================
+   RESPONSIVIDADE (MEDIA QUERIES)
+   =================================================================== */
+
+/* Regra de @media: só é aplicada quando a largura da tela é MENOR que 768px,
+ou seja, em celulares e telas pequenas. Aqui reorganizamos todo o grid do
+layout mestre para empilhar os blocos e o menu deixar de ficar ao lado do
+conteúdo, conforme exigido no requisito de responsividade. */
+@media (max-width: 768px){
+
+    body{
+
+        /* Uma coluna só, ocupando 100% da largura da tela */
+        grid-template-columns: 1fr;
+
+        /* O menu (nav) passa a ficar ENTRE o header e o main, ou seja,
+        no topo da página, ao invés de ficar ao lado do conteúdo */
+        grid-template-areas:
+            "header"
+            "nav"
+            "main"
+            "footer";
+
+    }
+
+    nav{
+
+        /* No celular, os botões do menu passam a ficar lado a lado (linha),
+        ao invés de empilhados em coluna, economizando altura de tela */
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        /* Como o menu deixou de ficar do lado do conteúdo, a borda muda
+        de "direita" para "embaixo", mantendo o bloco único visualmente */
+        border-right: none;
+        border-bottom: 5px solid white;
+
+    }
+
+    .botao{
+
+        /* Botões deixam de ocupar 100% da largura (que era a largura da coluna)
+        e passam a ter tamanho flexível para caberem lado a lado */
+        width: auto;
+        flex: 1 1 40%;
+
+    }
+
+    .cartao{
+
+        /* Os cartões passam a ocupar 100% da largura da tela no celular,
+        em vez dos 70% usados em telas grandes */
+        width: 100%;
+
+    }
+
+    .titulo{
+
+        /* Reduz o tamanho da fonte do título para caber melhor em telas pequenas */
+        font-size: 28px;
+
+    }
+
+    .texto{
+
+        /* Reduz o tamanho do texto para telas pequenas */
+        font-size: 18px;
+
+    }
+
+}
+
+/* ===== Ajustes da ATV09 (Django) =====
+Os itens do menu agora são links <a class="botao"> gerados pelo Django,
+no lugar dos <button onclick="mostrar(...)"> da ATV06. */
+a.botao{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Item do menu da página que está aberta */
+a.botao.ativo{
+    background-color: rgb(56, 17, 109);
+}
+
+/* Título do logo no cabeçalho vira link para a página inicial */
+header a{
+    color: white;
+    text-decoration: none;
+}
