@@ -1,0 +1,14 @@
+{% extends "core/base.html" %}
+{% block titulo %}{{ conteudo.titulo|default:"Início" }} | Portal da Dupla{% endblock %}
+{% block conteudo %}
+    {% if conteudo %}
+        {{ conteudo.conteudo_html|safe }}
+    {% else %}
+        <section class="pagina">
+            <h1 class="titulo">Bem-vindo</h1>
+            <article class="cartao">
+                <p class="texto">Cadastre um conteúdo com o slug <code>inicio</code> no Django Admin.</p>
+            </article>
+        </section>
+    {% endif %}
+{% endblock %}

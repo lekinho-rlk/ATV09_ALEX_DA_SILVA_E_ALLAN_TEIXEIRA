@@ -1,0 +1,47 @@
+{% load static %}
+<!-- Alex da Silva, Allan Teixeira - ATV09 - Turma 523 -->
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Meta viewport: obrigatória para o site se adaptar à largura da tela de celulares -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block titulo %}Portal da Dupla{% endblock %}</title>
+
+    <link rel="icon" href="{% static 'core/img/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+</head>
+
+<body>
+
+    <header>
+        <h1><a href="{% url 'home' %}">Portal da Dupla</a></h1>
+        <h2>Alex da Silva e Allan Teixeira</h2>
+    </header>
+
+    <!-- Menu dinâmico: cada item vem do model Menu (Django Admin).
+         Para adicionar, remover ou reordenar itens não é preciso mexer neste arquivo. -->
+    <nav aria-label="Navegação principal">
+        {% for item in menu_itens %}
+            {% if item.eh_externo %}
+                <a class="botao" href="{{ item.url_externa }}" target="_blank" rel="noopener noreferrer">{{ item.titulo }}</a>
+            {% else %}
+                <a class="botao{% if request.path == item.get_url %} ativo{% endif %}"
+                   href="{{ item.get_url }}">{{ item.titulo }}</a>
+            {% endif %}
+        {% endfor %}
+    </nav>
+
+    <main>
+        {% block conteudo %}{% endblock %}
+    </main>
+
+    <footer>
+        <h2>ATV09 - Alex da Silva e Allan Teixeira</h2>
+    </footer>
+
+</body>
+</html>

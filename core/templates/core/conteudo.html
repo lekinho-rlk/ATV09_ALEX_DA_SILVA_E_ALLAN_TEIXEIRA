@@ -1,0 +1,5 @@
+{% extends "core/base.html" %}
+{% block titulo %}{{ conteudo.titulo }} | Portal da Dupla{% endblock %}
+{% block conteudo %}
+    {{ conteudo.conteudo_html|safe }}
+{% endblock %}
