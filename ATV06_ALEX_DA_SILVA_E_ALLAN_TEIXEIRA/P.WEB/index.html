@@ -1,0 +1,386 @@
+<!-- Alex da Silva, Allan Teixeira - ATV06 - Turma 523 -->
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <!-- Meta viewport: obrigatória para o site se adaptar corretamente à largura da tela de celulares -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Portal da Dupla
+    </title>
+
+    <link rel="icon"
+          href="img/favicon.jpeg">
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- <header>: tag semântica do HTML5 que representa o cabeçalho/topo do site.
+         Substitui a antiga <div id="cabecalho"> da ATV05 -->
+    <header>
+
+        <h1>
+            Tela inicial, por:
+        </h1>
+
+        <h2>
+
+            Alex da Silva e Allan Teixeira
+
+        </h2>
+
+    </header>
+
+    <!-- <nav>: tag semântica do HTML5 que agrupa os links/botões de navegação do site.
+         Substitui a antiga <div id="menu"> da ATV05 -->
+    <nav>
+
+        <!-- Quando o botão é clicado, o onclick chama a função mostrar()
+        e envia o nome da página que deverá ser exibida -->
+
+        <button class="botao"
+                onclick="mostrar('inicial')">
+            Inicial
+        </button>
+
+        <button class="botao"
+                onclick="mostrar('curriculo_alex')">
+
+            Currículo: Alex
+
+        </button>
+
+        <button class="botao"
+                onclick="mostrar('tema_alex')">
+
+            Tema: Alex
+
+        </button>
+
+        <button class="botao"
+                onclick="mostrar('curriculo_allan')">
+
+            Currículo: Allan
+
+        </button>
+
+        <button class="botao"
+                onclick="mostrar('tema_allan')">
+
+            Tema: Allan
+
+        </button>
+
+    </nav>
+
+    <!-- <main>: tag semântica do HTML5 que envolve o conteúdo principal da página,
+         onde o JavaScript troca as seções visíveis. Substitui a antiga <div id="conteudo"> -->
+    <main>
+
+        <!-- <section>: cada página do site vira uma seção independente de conteúdo.
+             O id continua sendo usado aqui pois é necessário para o JavaScript (getElementById),
+             e não representa mais uma "grande área de layout mestre", e sim um bloco de conteúdo -->
+        <section id="inicial"
+                 class="pagina">
+
+            <h1 class="titulo">
+
+                Descrição do que você encontrará na página: 
+
+            </h1>
+
+            <!-- <article>: bloco de conteúdo independente e autocontido -->
+            <article class="cartao">
+
+                <pre class="texto">Aqui voce irá encontrar:
+
+Aqui estão os currículos e os temas livres de Alex da Silva e Allan Teixeira.
+
+Faça o uso dos botões do menu para navegar entre as páginas.</pre>
+
+            </article>
+
+        </section>
+
+        <!-- Currículo do Alex -->
+        <section id="curriculo_alex"
+                 class="pagina">
+
+            <h1 class="titulo">
+
+                Currículo de Alex da Silva
+
+            </h1>
+
+            <article class="cartao">
+
+                <img class="imagem"
+                     src="img/foto_do_alex.jpg"
+                     alt="Foto de Alex">
+
+                <pre class="texto">Nome: Alex da Silva
+
+Idade: 17 anos
+
+Cidade/Estado: Minha cidade / Meu estado
+
+Email: Email@aluno.ifal.edu.br
+
+Telefone: (XX) XXXXX-XXXX
+
+Endereço: Meu endereço
+
+Formação: Instituto Federal de Alagoas
+
+Curso: Técnico em Informática
+
+Finalização prevista: 2026</pre>
+
+                <h2>
+
+                    Experiência
+
+                </h2>
+
+                <pre class="texto">Twister Cursos
+
+Monitor
+
+Trabalhando desde 2025</pre>
+
+                <h2>
+
+                    Habilidades
+
+                </h2>
+
+                <pre class="texto">Ótima comunicação
+
+Trabalho em equipe
+
+Organização</pre>
+
+            </article>
+
+        </section>
+
+        <!-- Tema Livre do Alex -->
+        <section id="tema_alex"
+                 class="pagina">
+
+            <h1 class="titulo">
+
+                Memes Brasileiros Antigos
+
+            </h1>
+
+            <!-- Cada meme vira um <article> separado: são blocos de conteúdo
+                 independentes dentro da mesma seção -->
+            <article class="cartao">
+
+                <img class="imagem"
+                     src="img/varios_memes.jpg"
+                     alt="Memes brasileiros">
+
+                <pre class="texto">Os melhores memes brasileiros antigos incluem:
+
+Taca-le pau nesse carrinho, Marcos
+
+Eita, Giovana!
+
+Juliana está desmaiada
+
+Luiza do Canadá
+
+e muitos outros.</pre>
+
+            </article>
+
+            <article class="cartao">
+
+                <img class="imagem"
+                     src="img/pesadao.jpg"
+                     alt="Pesadão">
+
+                <pre class="texto">O meme Pesadão surgiu dos comerciais da
+Pesadão LifeStyle e ficou famoso pelos
+bordões e pelo jeito exagerado das propagandas.</pre>
+
+            </article>
+
+            <article class="cartao">
+
+                <img class="imagem"
+                     src="img/nao_interessa_pra_voce.jpg"
+                     alt="Não interessa pra você">
+
+                <pre class="texto">"Não interessa pra você, palhaço!"
+
+Surgiu em uma entrevista e se tornou
+um dos memes mais famosos da internet.</pre>
+
+            </article>
+
+            <article class="cartao">
+
+                <img class="imagem"
+                     src="img/engomado.jpg"
+                     alt="Engomadinho">
+
+                <pre class="texto">O Engomadinho ficou conhecido por representar
+pessoas muito formais e preocupadas com a aparência.</pre>
+
+            </article>
+
+        </section>
+
+        <!-- Currículo do Allan -->
+        <section id="curriculo_allan"
+                 class="pagina">
+
+            <h1 class="titulo">
+
+                Currículo de Allan Teixeira
+
+            </h1>
+
+            <article class="cartao">
+
+                <img class="imagem"
+                     src="img/pic_img_3706.jpeg"
+                     alt="Foto de Allan">
+
+                <pre class="texto">Idade: 17 anos
+
+Cidade: Minha cidade
+
+Telefone: (XX) XXXXX-XXXX
+
+E-mail: Email@aluno.ifal.edu.br</pre>
+
+                <h2>
+
+                    Objetivo Profissional
+
+                </h2>
+
+                <pre class="texto">Atuar na área da informática,
+adquirir experiência e desenvolver
+novas habilidades.</pre>
+
+            </article>
+
+        </section>
+
+        <!-- Tema Livre do Allan -->
+        <section id="tema_allan"
+                 class="pagina">
+
+            <h1 class="titulo">
+
+                Stranger Things
+
+            </h1>
+
+            <article class="cartao">
+
+                <img class="imagem"
+                     src="img/imagem_fundo.jpg"
+                     alt="Stranger Things">
+
+                <pre class="texto">A série Stranger Things possui diversos personagens importantes.
+
+Entre eles estão:
+
+Eleven
+
+Mike Wheeler
+
+Dustin Henderson
+
+Lucas Sinclair
+
+Will Byers
+
+Max Mayfield
+
+Nancy Wheeler
+
+Steve Harrington
+
+Jonathan Byers
+
+Robin Buckley
+
+Joyce Byers
+
+Jim Hopper</pre>
+
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- <footer>: tag semântica do HTML5 para o rodapé da página.
+         Substitui a antiga <div id="rodape"> -->
+    <footer>
+
+        <h2>
+
+            ATV06 - Alex da Silva e Allan Teixeira
+
+        </h2>
+
+    </footer>
+
+    <!-- <noscript>: mensagem exibida caso o visitante tenha o JavaScript desativado no navegador,
+         já que a navegação entre as páginas depende totalmente da função mostrar() -->
+    <noscript>
+        <p style="color: white; background-color: rgb(136,74,168); text-align: center; padding: 15px;">
+            Este site precisa de JavaScript habilitado para funcionar corretamente.
+            Por favor, ative o JavaScript no seu navegador.
+        </p>
+    </noscript>
+
+    <script>
+
+        // Função responsável por mostrar uma página
+        function mostrar(secao)
+        {
+
+            // Variável que guardará todas as páginas
+            var paginas;
+
+            // Guarda todos os elementos que possuem a classe pagina
+            paginas = document.getElementsByClassName("pagina");
+
+            // Percorre todas as páginas
+            for(var i = 0; i < paginas.length; i++)
+            {
+
+                // Esconde as páginas
+                paginas[i].style.display = "none";
+
+            }
+
+            // Mostra somente a página escolhida pelo botão
+            document.getElementById(secao).style.display = "block";
+
+        }
+
+        // Quando o site abrir, a página Home será exibida
+        mostrar("inicial");
+
+    </script>
+
+</body>
+</html>
